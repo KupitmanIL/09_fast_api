@@ -17,14 +17,30 @@ def get_task(task_id: int):
     for task in tasks_db:
         if task.id == task_id:
             return task
-    return HTTPException(status_code=404, detail="Task not found")
+    raise HTTPException(status_code=404, detail="Task not found")
 
 @app.get("/tasks")
 def get_tasks(skip: int = 0, limit: int = 10):
     return tasks_db[skip:skip+limit]
 
-#TODO Homework: add delete and update tasks by id functionalitieshttps://github.com/KupitmanIL/09_fast_api.git
-
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+@app.delete("/tasks/{task_id}")
+def delete_task(task_id: int):
+    for task in tasks_db:
+        if task.id == task_id:
+            tasks_db.remove(task)
+            return task
+    raise HTTPException(status_code=404, detail="Task not found")
+
+@app.put("/tasks/{task_id}")
+def update_task(task_id: int, task_dto: TaskDTO):
+    for task in tasks_db:
+        if task.id == task_id:
+            task.title = task_dto.title
+            task.description = task_dto.description
+            return task
+    raise HTTPException(status_code=404, detail="Task not found")
+
