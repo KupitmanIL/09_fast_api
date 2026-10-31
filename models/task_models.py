@@ -7,6 +7,5 @@ class Task(BaseModel):
     is_completed: bool = False
 
 class TaskDTO(BaseModel):
-    id: int
     title: str
     description: str | None = None

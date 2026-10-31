@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 
-from models.task_model import TaskDTO, Task
+from models.task_models import TaskDTO, Task
 
 app = FastAPI()
 
@@ -23,7 +23,7 @@ def get_task(task_id: int):
 def get_tasks(skip: int = 0, limit: int = 10):
     return tasks_db[skip:skip+limit]
 
-#TODO Homework: add delete and update tasks by id functionalities
+#TODO Homework: add delete and update tasks by id functionalitieshttps://github.com/KupitmanIL/09_fast_api.git
 
 @app.get("/health")
 async def health():
