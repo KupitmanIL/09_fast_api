@@ -16,7 +16,7 @@ async def logging_middleware(request, call_next):
 
 @app.exception_handler(RequestValidationError)
 def request_validator_handler(request, exc):
-    return JSONResponse(status_code=400, content={"detail": exc.errors(),'body': exc.body})
+    return JSONResponse(status_code=422, content={"detail": exc.errors(),'body': exc.body})
 
 
 @app.get("/health")

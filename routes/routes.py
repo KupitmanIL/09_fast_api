@@ -18,7 +18,7 @@ def get_task(task_id: int):
     for task in tasks_db:
         if task.id == task_id:
             return task
-    return HTTPException(status_code=404, detail="Task not found")
+    raise HTTPException(status_code=404, detail="Task not found")
 
 @router.get("/")
 def get_tasks(skip: int = 0, limit: int = 10):
@@ -37,6 +37,6 @@ def delete_task(task_id: int):
 def update_task(task_id: int, task_dto: TaskDTO):
     for idx, task in enumerate(tasks_db):
         if task.id == task_id:
-            tasks_db[idx] = Task(title=task_dto.title, description=task_dto.description, id=task_id)
+            tasks_db[idx] = Task(title=task_dto.title, description=task_dto.description, id=task_id, is_completed=task.is_completed)
             return tasks_db[idx]
     raise HTTPException(status_code=404, detail="Task not found")
