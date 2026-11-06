@@ -22,6 +22,8 @@ The project demonstrates CRUD operations, request validation, HTTP exception han
 * FastAPI
 * Pydantic
 * Uvicorn
+* Pytest
+* HTTPX
 
 ## Project Structure
 
@@ -129,6 +131,8 @@ Returns a list of tasks with pagination.
 
 **PUT** `/tasks/1000`
 
+Example request:
+
 ```json
 {
   "title": "Study FastAPI",
@@ -141,6 +145,8 @@ The existing task ID and completion status are preserved.
 ### Delete a Task
 
 **DELETE** `/tasks/1000`
+
+Example response:
 
 ```json
 {
@@ -178,16 +184,37 @@ This project focuses on REST API fundamentals rather than database integration.
 
 ## Testing
 
-The project includes 11 automated tests using pytest and FastAPI TestClient.
+The project includes **11 automated tests** using Pytest and FastAPI TestClient.
 
-Tests cover CRUD operations, pagination, request validation,
-error handling, and the health endpoint.
+Tests cover:
 
-### Install development dependencies
+* Task creation and validation
+* Retrieving tasks by ID
+* Task pagination
+* Task updates
+* Preservation of task completion status
+* Task deletion
+* HTTP 404 error handling
+* Health endpoint
+
+### Install Development Dependencies
 
 ```bash
 pip install -r requirements-dev.txt
+```
+
+### Run Tests
+
+From the project root directory, execute:
+
+```bash
+python -m pytest tests/ -v
+```
+
+The test suite contains 11 tests covering the application's core functionality.
 
 ## Project Status
 
 Educational project demonstrating backend development fundamentals with FastAPI.
+
+The application includes CRUD operations, request validation, HTTP error handling, logging middleware, interactive API documentation, and automated tests.
