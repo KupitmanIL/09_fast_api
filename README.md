@@ -33,8 +33,11 @@ The project demonstrates CRUD operations, request validation, HTTP exception han
 │   └── task_models.py
 ├── routes/
 │   └── routes.py
+├── tests/
+│   └── test_tasks.py
 ├── main.py
 ├── requirements.txt
+├── requirements-dev.txt
 └── README.md
 ```
 
@@ -172,6 +175,18 @@ Tasks are stored in an in-memory Python list.
 **Important:** Data is not persisted between application restarts.
 
 This project focuses on REST API fundamentals rather than database integration.
+
+## Testing
+
+The project includes 11 automated tests using pytest and FastAPI TestClient.
+
+Tests cover CRUD operations, pagination, request validation,
+error handling, and the health endpoint.
+
+### Install development dependencies
+
+```bash
+pip install -r requirements-dev.txt
 
 ## Project Status
 
